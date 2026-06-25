@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Premium Bubble Shooter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <div class="header">
+      <h1 class="title">Bubble Shooter</h1>
+      <div class="stats">
+        <div class="stat-box">Score<br><span id="score" class="stat-value">0</span></div>
+        <div class="stat-box">Best<br><span id="highScore" class="stat-value">0</span></div>
+        <div class="stat-box">Shots<br><span id="shots" class="stat-value">30</span></div>
+      </div>
+      <div class="controls">
+        <button id="pauseBtn" class="btn">Pause</button>
+        <button id="restartBtn" class="btn">Restart</button>
+      </div>
+    </div>
+    
+    <div class="canvas-wrapper">
+      <canvas id="gameCanvas" width="400" height="600"></canvas>
+      
+      <!-- HTML Bubble Overlays -->
+      <div id="htmlCurrentBubble" class="html-bubble current-bubble"></div>
+      <div id="htmlNextBubble" class="html-bubble next-bubble"></div>
+      
+      <!-- Overlay Screens -->
+      <div id="overlay" class="overlay hidden">
+        <h2 id="overlayTitle">Game Over</h2>
+        <p id="overlayMessage">You ran out of shots!</p>
+        <button id="overlayBtn" class="btn primary-btn">Try Again</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

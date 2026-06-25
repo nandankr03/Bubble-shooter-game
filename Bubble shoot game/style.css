@@ -1,0 +1,243 @@
+:root {
+  --primary-color: #6366f1;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --text-color: #f8fafc;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  touch-action: none;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(to right, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+.stat-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 8px 5px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  font-weight: 400;
+  font-size: 13px;
+  text-align: center;
+  flex: 1;
+  color: #cbd5e1;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  display: block;
+  margin-top: 4px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-color);
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  flex: 1;
+  max-width: 120px;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.primary-btn {
+  background: var(--primary-color);
+  border: none;
+  padding: 12px 30px;
+  font-size: 18px;
+  max-width: none;
+}
+
+.primary-btn:hover {
+  background: #4f46e5;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+.canvas-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+}
+
+.html-bubble {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--bubble-color) 30%, var(--bubble-color) 100%);
+  box-shadow: 0 0 8px var(--bubble-color);
+  pointer-events: none;
+}
+
+.html-bubble::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 33%;
+  height: 33%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.html-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  width: 25%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+
+.current-bubble {
+  width: 9.9%;
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 92.8333%;
+}
+
+.next-bubble {
+  width: 7.65%;
+  aspect-ratio: 1 / 1;
+  left: 87.5%;
+  top: 92%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay h2 {
+  font-size: 42px;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+  background: linear-gradient(to right, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #e2e8f0;
+}
+
+@media (max-height: 750px) {
+  .game-container {
+    gap: 10px;
+    padding: 5px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .canvas-wrapper {
+    max-height: 65vh;
+  }
+  canvas {
+    height: 100%;
+    width: auto;
+  }
+}
